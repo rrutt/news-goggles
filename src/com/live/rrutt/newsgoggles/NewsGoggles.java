@@ -11,6 +11,8 @@ import java.util.List;
 
 public class NewsGoggles implements Serializable, OutputListener {
 
+	private static final long serialVersionUID = -6245299292933219503L;
+
 	public Prolog engine;
 
 	private static Boolean testing = false;
@@ -69,6 +71,7 @@ public class NewsGoggles implements Serializable, OutputListener {
 
 				if (info.isSuccess()) {
 					System.out.println("Success.");
+					@SuppressWarnings("rawtypes")
 					List bindings = info.getBindingVars();
 
 					if (PrologLibrary.traceEnabled) {

@@ -41,6 +41,8 @@ import java.awt.event.*;
 
 public class NewsGogglesIde extends JFrame implements IDE {
 
+	private static final long serialVersionUID = 3151215586075603718L;
+
 	private ThinletTheoryEditor editor;
     private JavaEditArea editArea;
     private ThinletToolBar toolBar;

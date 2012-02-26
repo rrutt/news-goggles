@@ -10,6 +10,8 @@ import java.io.*;
  */
 public class PrologLibrary extends Library {
 
+	private static final long serialVersionUID = -1743358458966440903L;
+
 	public static boolean traceEnabled = true;
 
 	protected OutputStream outputStream = System.out;

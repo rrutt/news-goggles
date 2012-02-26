@@ -1,12 +1,8 @@
 package com.live.rrutt.newsgoggles;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import alice.tuprolog.SolveInfo;
-import alice.tuprolog.Theory;
 
 public class TheoryLoader {
 
@@ -34,7 +30,6 @@ public class TheoryLoader {
 		
 		try {
 			InputStream theoryInputStream = null;
-			Theory t = null;
 			ClassLoader cl = getClass().getClassLoader();
 			if (cl == null) {
 				throw new Exception("Could not get ClassLoader");

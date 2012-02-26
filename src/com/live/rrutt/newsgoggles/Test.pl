@@ -47,4 +47,3 @@ test3 :-
 	!, 
 	trace('Test 3 Fails.'), trace_nl,
 	fail.
-	
