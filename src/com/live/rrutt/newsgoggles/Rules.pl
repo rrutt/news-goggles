@@ -173,6 +173,32 @@ is_subscriber(S) :-
 	subscriber_allows(S, _, _).
 
 
+% Given an Article, 
+% return the list of Subscribers that the Article will reach.	
+
+article_readers(A, ResultList) :-
+	findall_nodups(S, is_subscriber(S), SList),
+	filter_subscribers_for_article(SList, A, ResultList).
+
+filter_subscribers_for_article([], _, []).
+filter_subscribers_for_article([S | Tail], A, [S | TailList]) :-	
+	article_is_visible_to_subscriber(A, S), !,
+	filter_subscribers_for_article(Tail, A, TailList).
+filter_subscribers_for_article([S | Tail], A, TailList) :-
+	filter_subscribers_for_article(Tail, A, TailList).
+	
+% Get master "list of lists" for all Article/Subscriber links.
+
+all_article_readers(ResultList) :-
+	findall_nodups(A, article(A, _, _), AList),
+	all_article_readers_for_list(AList, ResultList).
+
+all_article_readers_for_list([], []).
+all_article_readers_for_list([A | Tail], [article_reaches(A, SList) | TailList]) :-
+	article_readers(A, SList),
+	all_article_readers_for_list(Tail, TailList).
+
+
 % Given a Provider, 
 % return the list of Subscribers that receive at least one of the Provider's Articles.
 % (Can be used to target advertising or premium direct content, etc.)	

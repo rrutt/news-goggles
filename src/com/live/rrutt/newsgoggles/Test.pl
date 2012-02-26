@@ -1,6 +1,7 @@
 test :-
 	disable_trace, test1,
-	disable_trace, test2.
+	disable_trace, test2,
+	disable_trace, test3.
 
 test1 :-
 	ExpectedResultList = 
@@ -31,3 +32,19 @@ test2 :-
 	!, 
 	trace('Test 2 Fails.'), trace_nl,
 	fail.
+
+test3 :-	
+	ExpectedResultList = 
+		[article_reaches(1001,['@Alice','@Bob','@Pat']),article_reaches(1002,['@Alice','@Pat']),article_reaches(2001,['@Alice','@Bob','@Pat']),article_reaches(2002,[]),article_reaches(3001,['@Alice','@Bob','@Chris']),article_reaches(3002,['@Alice','@Chris']),article_reaches(4001,['@Alice','@Bob','@Chris','@Pat']),article_reaches(4002,['@Alice'])]
+	,
+	all_article_readers(ActualResultList),
+	enable_trace,
+	trace('Test 3: ExpectedResultList = '), trace_nl, trace(ExpectedResultList), trace_nl,
+	trace('Test 3: ActualResultList = '), trace_nl, trace(ActualResultList), trace_nl,
+	ExpectedResultList = ActualResultList, !,
+	trace('Test 3 Passes!'), trace_nl.
+test3 :-
+	!, 
+	trace('Test 3 Fails.'), trace_nl,
+	fail.
+	
