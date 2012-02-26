@@ -36,3 +36,7 @@ bin
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Temporary files #
+###################
+TMP*.htm
