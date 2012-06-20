@@ -72,8 +72,8 @@ public class NewsGogglesGui {
      * Launch a GUI suitable for the Java2 platform.
      */
     private Prolog launchJavaGUI(String theoryText) {
-    	NewsGogglesIde ide = new NewsGogglesIde();
-		ide.pack();
+    	NewsGogglesJavaIde ide = new NewsGogglesJavaIde();
+//		ide.pack();
 		ide.setEditorContent(theoryText);
 		ide.setVisible(true);
 		
